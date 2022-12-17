@@ -1,7 +1,6 @@
 const currentTime = moment().format('h a')
-
 const [currentHourString, currentAmPm] = currentTime.split(' ')
-
+const dateDisplay = document.getElementById("currentDay").textContent = moment().format("MMM Do YY"); //Displays date
 const currentHour = parseInt(currentHourString)
 
 const nine = document.getElementById("9-am")
@@ -21,6 +20,7 @@ for(const saveButton of saveButtons){
     saveButton.addEventListener('click', () => {
         const inputValue = saveButton.parentElement.children[1].value
         localStorage.setItem( saveButton.parentElement.id ,inputValue)
+        
     })
 }
 
@@ -28,8 +28,8 @@ for(const saveButton of saveButtons){
 function populateNotes() {
     const keys = Object.keys(localStorage)
     keys.forEach(key => console.log(localStorage[key]))
-}
 
+}
 
 function convertTo24Hr (time, isAmOrPm) {
     if(time === 12 && isAmOrPm === 'pm') {
@@ -64,3 +64,6 @@ function applyColor() {
 
 populateNotes()
 applyColor()
+
+
+
