@@ -24,11 +24,14 @@ for(const saveButton of saveButtons){
     })
 }
 
-
+//local storage display
 function populateNotes() {
     const keys = Object.keys(localStorage)
-    keys.forEach(key => console.log(localStorage[key]))
-
+    keys.forEach(key => {
+        const parentDiv = document.getElementById(key)
+        parentDiv.children[1].value = localStorage[key]
+    })
+    
 }
 
 function convertTo24Hr (time, isAmOrPm) {
@@ -64,6 +67,3 @@ function applyColor() {
 
 populateNotes()
 applyColor()
-
-
-
